@@ -8,7 +8,7 @@ Selecting a product has always been a hassle for me especially from large suppli
 <img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/sephora-app-gif.gif" alt="sephora-gif" style="width:300px;"/>
 </p>
 
-Imagine doing this repetitively until you found your preferred product. 
+Imagine doing this repetitively until you find your preferred product. 
 
 ## Objective
 
