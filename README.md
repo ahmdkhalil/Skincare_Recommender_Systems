@@ -58,6 +58,21 @@ A note on data acquisition and feature engineering: I scraped Sephora.com using 
 ### My Analysis:
 Little informaton was given on how OP ended up with the final data but the data clearly shows each user's review for a product and other features related to the user and product. We could see that preprocessing and cleaning were done for the review and ingredient columns. The 'Good_stuff' column suggests that it correlates with the rating stars. Amongst the user features, for some reason only the Skin_Type data column were hot encoded.
 
+### Make my own version:
+In that case I removed all the columns that I assumed not from original dataset.
+
+
+The columns are:
+1. 'Combination'
+2. 'Dry'
+3. 'Normal'
+4. 'Oily'
+5. 'Sensitive'
+6. 'Ingredients_Cleaned'
+7. 'Review_Cleaned'
+8. 'Good_Stuff'
+9. 'Ing_Tfidf
+
 ------------------------------------------------------------------
 
 # Data Cleaning
