@@ -12,12 +12,12 @@ Imagine doing this repetitively until you found your preferred product.
 
 ## Objective
 
-1. Build a recommender system for a cold start problem that inputs individual data and outputs recommended products based on the inputs given
+1. Build a recommender system for a cold start problem that inputs individual data and outputs recommended products based on the inputs given.
 
 Inputs:
 
       1. Recommender Model 1: User Features: Skin type, Skin tone, Eye colour, Hair colour. 
-      2. Recommender Model 2: Product Features: Ingredients List
+      2. Recommender Model 2: Product Features: Ingredients List.
 
 What are the different types of Recommender Systems:
 
@@ -50,7 +50,7 @@ Model 2 is most similar to Content-based Filtering.
 
 # Data Collection
 
-The dataset is forked from this github repo: https://github.com/agorina91/final_project
+The dataset is forked from this github repo: https://github.com/agorina91/final_project.
 
 ### Some useful notes from OP:
 A note on data acquisition and feature engineering: I scraped Sephora.com using selenium webdriver and got two dataframes: user data and product data. They were merged together on unique user id, cleaned, which resulted in a big dataframe with the following columns: 'Username', 'Skin_Tone', 'Skin_Type', 'Eye_Color', 'Hair_Color','Rating_Stars', 'Review', 'Product', 'Brand', 'Price', 'Rating','Ingredients', 'Combination', 'Dry', 'Normal', 'Oily', 'Sensitive','Category', 'Product_Url', 'User_id', 'Product_id','Ingredients_Cleaned', 'Review_Cleaned', 'Good_Stuff', 'Ing_Tfidf'.
@@ -82,7 +82,7 @@ Ingredient columns list shows more interesting data: aside from 'no info' in the
 
 #### After cleaning the data the end result of the data are as follows
 
-Original = 8649 entries. Final = 6260 entries
+Original = 8649 entries. Final = 6260 entries.
 
 
 | #  | Column       | Dtype  | Description |
