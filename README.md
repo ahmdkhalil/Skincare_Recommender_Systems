@@ -4,7 +4,7 @@ Selecting a product has always been a hassle for me especially from large suppli
 
 Here is an example on how to select a product and how long it’ll take to choose the one that is suitable. 
 
-(Insert gif sephora app)
+[Spehora gif](https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/sephora-app-gif.gif)
 
 Imagine looping through these before ending up with your preferred one.
 
