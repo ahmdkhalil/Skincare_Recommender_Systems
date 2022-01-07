@@ -1,32 +1,36 @@
 # Skincare_Recommender_Systems
 
-Selecting a product has always been a hassle for me especially from large suppliers such as Sephora. 
+## Introduction
 
-Here is an example on how to select a product and how long it’ll take to choose the one that is suitable. 
+Selecting a product has always been a hassle for me especially from large suppliers such as Sephora. Here is an example on how to select a product and how long it’ll take to choose the one that is suitable: 
 
-[Spehora gif](https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/sephora-app-gif.gif)
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/sephora-app-gif.gif" alt="sephora-gif" style="width:200px;"/>
+</p>
 
 Imagine looping through these before ending up with your preferred one.
 
-My goal is to solve that problem. 
-
-Objectives:
+## Objective
 
 1. Build a recommender system for a cold start problem that inputs individual data and outputs recommended products based on the inputs given
 
 Inputs:
 
-1. Recommender Model 1: User Features: Skin type, Skin tone, Eye colour, Hair colour. 
-2. Recommender Model 2: Product Features: Ingredients List
+      1. Recommender Model 1: User Features: Skin type, Skin tone, Eye colour, Hair colour. 
+      2. Recommender Model 2: Product Features: Ingredients List
 
 What are the different types of Recommender Systems:
 
 1. Collaborative Filtering
 2. Content-based Filtering
 
-![EE53AA33-D659-4A03-AC1E-E53B659BFB84.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/451e35f3-be6a-499e-803c-a929401f1ee0/EE53AA33-D659-4A03-AC1E-E53B659BFB84.png)
+Here’s an example of a movie recommender system:
 
-Here’s an example of a movie recommender system
+
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/types-of-rec-sys.png" alt="sephora-gif" style="width:800px;"/>
+</p>
+
 
 In this project,
 
@@ -34,13 +38,37 @@ Model 1 is most similar to Collaborative Filtering.
 
 Model 2 is most similar to Content-based Filtering. 
 
-The dataset is forked from this github. 
+The dataset is forked from this github repo: https://github.com/agorina91/final_project
 
-…….
+### Some useful notes from OP:
+A note on data acquisition and feature engineering: I scraped Sephora.com using selenium webdriver and got two dataframes: user data and product data. They were merged together on unique user id, cleaned, which resulted in a big dataframe with the following columns: 'Username', 'Skin_Tone', 'Skin_Type', 'Eye_Color', 'Hair_Color','Rating_Stars', 'Review', 'Product', 'Brand', 'Price', 'Rating','Ingredients', 'Combination', 'Dry', 'Normal', 'Oily', 'Sensitive','Category', 'Product_Url', 'User_id', 'Product_id','Ingredients_Cleaned', 'Review_Cleaned', 'Good_Stuff', 'Ing_Tfidf'.
+
+### My Analysis:
+Little informaton was given on how OP ended up with the final data but the data clearly shows each user's review for a product and other features related to the user and product. We could see that preprocessing and cleaning were done for the review and ingredient columns. The 'Good_stuff' column suggests that it correlates with the rating stars. Amongst the user features, for some reason only the Skin_Type data column were hot encoded.
+
 
 After cleaning the data the end result of the data are as follow:
 
-(Insert table)
+8649 entries, 0 to 8702
+Data columns (total 16 columns):
+| # | Column |     Non-Null Count | Dtype | 
+---  ------        --------------  -----  
+| 0   Username      8649 non-null   object 
+| 1   Skin_Tone     8649 non-null   object 
+| 2   Skin_Type     8649 non-null   object 
+| 3   Eye_Color     8649 non-null   object 
+| 4   Hair_Color    8649 non-null   object 
+| 5   Rating_Stars  8649 non-null   int64  
+| 6   Review        8649 non-null   object 
+| 7   Product       8649 non-null   object 
+| 8   Brand         8649 non-null   object 
+| 9   Price         8649 non-null   int64  
+| 10  Rating        8649 non-null   float64
+| 11  Ingredients   8649 non-null   object 
+| 12  Category      8649 non-null   object 
+| 13  Product_Url   8649 non-null   object 
+| 14  User_id       8649 non-null   int64  
+ 15  Product_id    8649 non-null   int64 
 
 EDA
 
