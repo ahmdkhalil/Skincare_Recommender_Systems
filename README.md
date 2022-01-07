@@ -1,8 +1,8 @@
 # Skincare_Recommender_Systems
 
-Selecting a product has always been a hassle for me especially large suppliers such as Sephora. 
+Selecting a product has always been a hassle for me especially from large suppliers such as Sephora. 
 
-Here is an example on how to select a product and how long it’ll take to choose the one that suits you. 
+Here is an example on how to select a product and how long it’ll take to choose the one that is suitable. 
 
 (Insert gif sephora app)
 
