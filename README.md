@@ -38,6 +38,18 @@ Model 1 is most similar to Collaborative Filtering.
 
 Model 2 is most similar to Content-based Filtering. 
 
+---------------------------------------------------------------------
+# Content:
+## 1. Data Collection
+## 2. Data Cleaning
+## 3. EDA
+## 4. Modelling & Evaluation
+## 5. Conclusion & Future Works
+
+---------------------------------------------------------------------
+
+# Data Collection
+
 The dataset is forked from this github repo: https://github.com/agorina91/final_project
 
 ### Some useful notes from OP:
@@ -46,59 +58,186 @@ A note on data acquisition and feature engineering: I scraped Sephora.com using 
 ### My Analysis:
 Little informaton was given on how OP ended up with the final data but the data clearly shows each user's review for a product and other features related to the user and product. We could see that preprocessing and cleaning were done for the review and ingredient columns. The 'Good_stuff' column suggests that it correlates with the rating stars. Amongst the user features, for some reason only the Skin_Type data column were hot encoded.
 
+------------------------------------------------------------------
 
-After cleaning the data the end result of the data are as follow:
+# Data Cleaning
 
-8649 entries
+## Missing values
+
+Values with no data are in top 1 or 2. The numbers are similar.
+
+- Skin Tone 'No data' = 2102
+- Skin Type 'No data' = 2106
+- Eye Color 'No data' = 2085
+- Hair Color 'No data' = 2092
+
+Ingredient columns list shows more interesting data: aside from 'no info' in the top frequency, there are two other values that are not ingredient, 'Visit the Shiseido boutique' & 'Visit the SEPHORA COLLECTION boutique'.
+
+### Removed/Dropped
+1. No data values from user features.
+2. No info values from ingredients column.
+3. 'Visit the Shiseido boutique' & 'Visit the SEPHORA COLLECTION boutique' from ingredients column.
+
+
+
+#### After cleaning the data the end result of the data are as follows
+
+Original = 8649 entries. Final = 6260 entries
 
 
 | #  | Column       | Dtype  | Description |
 | -- | ------------ | ------ | ----------- |
-| 0  | Username     | string | |
-| 1  | Skin_Tone    | string | |
-| 2  | Skin_Type    | string | |
-| 3  | Eye_Color    | string | |
-| 4  | Hair_Color   | string | |
-| 5  | Rating_Stars | integer| |
-| 6  | Review       | string | |
-| 7  | Product      | string | | 
-| 8  | Brand        | string | |
-| 9  | Price        | int64  | |
-| 10 | Rating       | float  | |
-| 11 | Ingredients  | string | |
-| 12 | Category     | string | |
-| 13 | Product_Url  | string | |
-| 14 | User_id      | integer| |
-| 15 | Product_id   | integer| |
+| 0  | Username     | string | Username of the product reviewer |
+| 1  | Skin_Tone    | string | User skin tone from 9 different tones: Light, Fair, Medium, Olive, Tan, Procelain, Deep, Dark, Ebony |
+| 2  | Skin_Type    | string | User skin type from 4 different types: Combination, Oily, Dry, Normal |
+| 3  | Eye_Color    | string | User eye colour: Brown, Blue, Hazel, Green, Grey|
+| 4  | Hair_Color   | string | User hair colour: Brunette, Blonde, Black, Auburn, Red, Gray|
+| 5  | Rating_Stars | integer| User rating stars of the product |
+| 6  | Review       | string | User review of the product |
+| 7  | Product      | string | Product name | 
+| 8  | Brand        | string | Product brand |
+| 9  | Price        | integer| (USD) |
+| 10 | Rating       | float  | Average rating of the product from the collected users |
+| 11 | Ingredients  | string | Ingredients of the product |
+| 12 | Category     | string | Product category|
+| 13 | Product_Url  | string | Product url website|
+| 14 | User_id      | integer| User id|
+| 15 | Product_id   | integer| Product id|
+
+### Outliers
+I will not remove any outliers from this data. Although it is understood that during production might slip a tiny percentage resulting in bad ratings and reviews. In that case the fair approach is removing outliers from each and every product one by one. This will take too much time to iterate through 300 unique products as you can see from the code below.
 
 
-EDA
+<code>print(df_drop1['Product'].nunique()) </code>
+       
+300 
 
-User features
+For this project I will choose to ignore the outliers. Outliers will be included in the modelling.
 
-Ratings vs Rating Stars
+---------------------------------------------------
 
- reviews wordcloud
+# EDA
 
-Num of Products per Category
+I performed EDA to understand the data better such as the User Features:
 
-Ingredients wordcloud each category
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/features-after.png" style="width:800px;"/>
+</p>
 
-Modelling
+### Define the metrics for the model
+- For User to User Filtering use the Rating Stars as the metric.
+- For Product Ingredient use the Rating column as the metric.
+
+### Rating vs Rating Stars column distribution
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/ratingvsratingstars.png" style="width:800px;"/>
+</p>
+
+### Rating Percentile
+
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/percentile-rating.png" style="width:800px;"/>
+</p>
+
+### Number of Products per Category
+
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/num-prod-each-cat.png" style="width:800px;"/>
+</p>
+
+## Preprocessing text data
+
+### Preprocessing
+
+#### Review column:
+    1. Tokenize
+    2. Lemmatize
+    3. Remove stopwords, punctuation etc
+    4. TF-IDF
+    
+#### Ingredients column:
+    1. Tokenize
+    2. Lemmatize
+    3. Remove stopwords, punctuation etc
+    4. WordCloud
+    
+### Ingredients WordCloud of each Category
+
+<p align="center">
+<h4 style="font-size:30px;">Cleanser</h4>
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/wordcloud-cleanser.png" title="Cleanser" style="width:400px;"/>
+</p>
+
+<p align="center">
+<h4 style="font-size:30px;">Facemask</h4>
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/wordcloud-facemask.png" title="Facemask" style="width:400px;"/>
+</p>
+
+<p align="center">
+<h4 style="font-size:30px;">Mositurizer</h4>
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/wordcloud-moisturizer.png" title="Moisturizer" style="width:400px;"/>
+</p>
+
+<p align="center">
+<h4 style="font-size:30px;">Treatment</h4>
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/wordcloud-treatmetn.png" title="Treatment" style="width:400px;"/>     
+</p>
+
+--------------------------------------------------
+
+# Modelling and Evaluation
+
+High user feature count in descending order:
+
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/user-features-combined.png" style="width:900px;"/>     
+</p>
+
+
+## Modelling
 
 1. Correlation similarity
 2. SVD
 
-Evaluation:
+Before modelling I ran a long-tail plot to remove any popular product.
+
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/long-tail-plot.png" style="width:900px;"/>     
+</p>
+
+
+Usually only a small percentage of items have a high volume of interactions, and this is referred to as the “head”. Most items are in the “long tail”, but they only make up a small percentage of interactions but in the sephora products case most of its items has high ratings from users.
+
+This makes it easy for a recommender system to learn to accurately predict these items. The objective of this recommendation is mainly focus on cold start problems where the user don't have any history purchase and wants to product reommendation on their inputs (user features and ingredients)
+
+### Results for the models:
+
+<p align="center">
+<h3 style="font-size:30px;">Inputs: Dry, Light, Hazel, Blonde</h3>
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/corr_sim-dry-light-hazel-blonde.png" width="450" height="200";"/>     
+</p>
+
+<p align="center">
+<h3 style="font-size:30px;">SVD Prediction Result</h3>
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/svd-pred.png" width="450" height="200";"/>     
+</p>
+
+
+## Evaluation:
 
 1. SVD 
-    1. MSE
-    2. RMSE
+    1. MSE: 1.8
+    2. RMSE: 1.3
 2. Side by side comparison
 
-Conclusion and Future Works
+<p float="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/corr_sim-comb-dark-brown-black.png" width="450" height="200";"/>     
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/svd-pred2.png" width="500" height="200";"/> 
+</p>
 
-# Conclusion 
+--------------------------------------------------------
+
+# Conclusion and Future Works
 
 Building a recommender system is not that hard once you get the hang of it. To evaluate whether it works is another thing especially for a cold start problem and a small dataset. 
 
@@ -116,7 +255,7 @@ Evaluation for SVD is quite bad, scoring:
 1. MSE:  1.8
 2. RMSE:  1.3
 
-If were to compare results to the first model. Definitely SVD is better choice.
+If were to compare results to the first model. Definitely SVD is a better choice.
 
 
 ## Future Works:
