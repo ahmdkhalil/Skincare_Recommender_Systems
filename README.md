@@ -214,12 +214,12 @@ This makes it easy for a recommender system to learn to accurately predict these
 
 <p align="center">
 <h3 style="font-size:30px;">Inputs: Dry, Light, Hazel, Blonde</h3>
-<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/corr_sim-dry-light-hazel-blonde.png" width="450" height="200";"/>     
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/corr_sim-dry-light-hazel-blonde.png" width="700" height="300";"/>     
 </p>
 
 <p align="center">
 <h3 style="font-size:30px;">SVD Prediction Result</h3>
-<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/svd-pred.png" width="450" height="200";"/>     
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/svd-pred.png" width="800" height="200";"/>     
 </p>
 
 
@@ -228,11 +228,14 @@ This makes it easy for a recommender system to learn to accurately predict these
 1. SVD 
     1. MSE: 1.8
     2. RMSE: 1.3
-2. Side by side comparison
+2. Side by side comparison, inputs user features: Combination, Dark, Brown, Black
 
-<p float="center">
-<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/corr_sim-comb-dark-brown-black.png" width="450" height="200";"/>     
-<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/svd-pred2.png" width="500" height="200";"/> 
+<p align="center">
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/corr_sim-comb-dark-brown-black.png" width="700" height="300";"/>  
+</p>
+                                                                                                                                                   
+<p align="center">                                                                                                                                                   
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/svd-pred2.png" width="800" height="200";"/> 
 </p>
 
 --------------------------------------------------------
