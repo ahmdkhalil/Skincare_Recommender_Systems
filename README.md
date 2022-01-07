@@ -208,7 +208,7 @@ Before modelling I ran a long-tail plot to remove any popular product.
 
 Usually only a small percentage of items have a high volume of interactions, and this is referred to as the “head”. Most items are in the “long tail”, but they only make up a small percentage of interactions but in the sephora products case most of its items has high ratings from users.
 
-This makes it easy for a recommender system to learn to accurately predict these items. The objective of this recommendation is mainly focus on cold start problems where the user don't have any history purchase and wants to product reommendation on their inputs (user features and ingredients)
+This makes it easy for a recommender system to learn to accurately predict these items. The objective of this recommendation is mainly focus on cold start problems where the user don't have any history purchase and wants to product recommendation on their inputs (user features and ingredients).
 
 ### Results for the models:
 
