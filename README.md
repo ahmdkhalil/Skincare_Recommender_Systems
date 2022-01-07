@@ -5,10 +5,10 @@
 Selecting a product has always been a hassle for me especially from large suppliers such as Sephora. Here is an example on how to select a product and how long it’ll take to choose the one that is suitable: 
 
 <p align="center">
-<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/sephora-app-gif.gif" alt="sephora-gif" style="width:200px;"/>
+<img src="https://github.com/ahmdkhalil/Skincare_Recommender_Systems/blob/main/images/sephora-app-gif.gif" alt="sephora-gif" style="width:300px;"/>
 </p>
 
-Imagine looping through these before ending up with your preferred one.
+Imagine doing this repetitively until you found your preferred product. 
 
 ## Objective
 
@@ -49,26 +49,28 @@ Little informaton was given on how OP ended up with the final data but the data 
 
 After cleaning the data the end result of the data are as follow:
 
-8649 entries, 0 to 8702
-Data columns (total 16 columns):
-| # | Column |     Non-Null Count | Dtype | 
----  ------        --------------  -----  
-| 0   Username      8649 non-null   object 
-| 1   Skin_Tone     8649 non-null   object 
-| 2   Skin_Type     8649 non-null   object 
-| 3   Eye_Color     8649 non-null   object 
-| 4   Hair_Color    8649 non-null   object 
-| 5   Rating_Stars  8649 non-null   int64  
-| 6   Review        8649 non-null   object 
-| 7   Product       8649 non-null   object 
-| 8   Brand         8649 non-null   object 
-| 9   Price         8649 non-null   int64  
-| 10  Rating        8649 non-null   float64
-| 11  Ingredients   8649 non-null   object 
-| 12  Category      8649 non-null   object 
-| 13  Product_Url   8649 non-null   object 
-| 14  User_id       8649 non-null   int64  
- 15  Product_id    8649 non-null   int64 
+8649 entries
+
+
+| #  | Column       | Dtype  | Description |
+| -- | ------------ | ------ | ----------- |
+| 0  | Username     | string | |
+| 1  | Skin_Tone    | string | |
+| 2  | Skin_Type    | string | |
+| 3  | Eye_Color    | string | |
+| 4  | Hair_Color   | string | |
+| 5  | Rating_Stars | integer| |
+| 6  | Review       | string | |
+| 7  | Product      | string | | 
+| 8  | Brand        | string | |
+| 9  | Price        | int64  | |
+| 10 | Rating       | float  | |
+| 11 | Ingredients  | string | |
+| 12 | Category     | string | |
+| 13 | Product_Url  | string | |
+| 14 | User_id      | integer| |
+| 15 | Product_id   | integer| |
+
 
 EDA
 
